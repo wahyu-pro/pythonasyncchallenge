@@ -8,9 +8,10 @@ async def fetch(session, url):
 async def main():
     async with aiohttp.ClientSession() as session:
         data = await fetch(session, 'https://jsonplaceholder.typicode.com/users')
-        result = filter(lambda a: 'le' in a['name'].lower(), data)
-        # result = map(lambda a: a['name'], result1)
-        print(list(result))
+        result1 = filter(lambda a: 'le' in a['name'].lower(), data)
+        result = map(lambda a: a['name'], result1)
+        for i in result:
+            print(i)
 
 if __name__ == '__main__':
     asyncio.run(main())
